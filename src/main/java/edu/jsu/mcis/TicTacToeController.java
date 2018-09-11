@@ -35,7 +35,9 @@ public class TicTacToeController {
            error message using view's showInputError() if input is invalid. */
         
         /* INSERT YOUR CODE HERE */
-        
+        boolean validAnswer;
+        String input = keyboard.next();
+
     }
 
 }
