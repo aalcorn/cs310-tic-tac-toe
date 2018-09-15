@@ -35,10 +35,24 @@ public class TicTacToeController {
            error message using view's showInputError() if input is invalid. */
         
         /* INSERT YOUR CODE HERE */
+        int rowInput;
+        int colInput;
         boolean validAnswer = false;
-        String input = keyboard.next(); 
-        String[] inputArr = input.split(" ");
-
+        String[] inputArr = new String[2];
+        while(validAnswer == false) {
+            String input = keyboard.nextLine(); 
+            inputArr = input.split(" ");
+            rowInput = Integer.parseInt(inputArr[0]);
+            colInput = Integer.parseInt(inputArr[1]);
+            validAnswer = model.makeMark(rowInput,colInput);
+            if (validAnswer == false) {
+                view.showInputError();
+            }
+        }
+        //System.out.println(inputArr[0] + " " + inputArr[1]);
+        validAnswer = false;
+        
+        
     }
 
 }

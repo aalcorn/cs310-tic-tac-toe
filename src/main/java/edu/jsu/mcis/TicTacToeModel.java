@@ -92,8 +92,18 @@ public class TicTacToeModel {
            empty! */
         
         /* INSERT YOUR CODE HERE */
-
-        return false; /* remove this line! */
+        boolean result = false;
+        if (isValidSquare(row,col) && !isSquareMarked(row,col)) {
+            if (xTurn) {
+                grid[row][col] = Mark.X;
+            }
+            else {
+                grid[row][col] = Mark.O;
+            }
+            result = true;
+            xTurn = !xTurn; 
+        }
+        return result;
         
     }
 	
@@ -102,7 +112,7 @@ public class TicTacToeModel {
         /* Return true if specified location is within grid bounds */
         
         /* INSERT YOUR CODE HERE */
-        if (row < width && col < width) {
+        if ((row < width) && (row >= 0) && (col < width) && (col >= 0)) {
             return true;
         }
         else {
@@ -116,7 +126,7 @@ public class TicTacToeModel {
         /* Return true if square at specified location is marked */
         
         /* INSERT YOUR CODE HERE */
-        if (grid[row][col] != Mark.EMPTY) {
+        if (grid[row][col] == Mark.EMPTY) {
             return false;
         }
         else {
@@ -129,8 +139,10 @@ public class TicTacToeModel {
         
         /* Return mark from the square at the specified location */
         
-        /* INSERT YOUR CODE HERE */ 
-        return grid[row][col];
+        /* INSERT YOUR CODE HERE */
+        Mark theMark = grid[row][col];
+
+        return theMark;
             
     }
 	
@@ -141,8 +153,18 @@ public class TicTacToeModel {
            value */
         
         /* INSERT YOUR CODE HERE */
-
-        return null; /* remove this line! */
+        if (isMarkWin(Mark.X)) {
+            return Result.X;
+        }
+        else if (isMarkWin(Mark.O)) {
+            return Result.O;
+        }
+        else if (isTie()) {
+            return Result.TIE;
+        }
+        else {
+            return Result.NONE;
+        }
 
     }
 	
@@ -192,7 +214,7 @@ public class TicTacToeModel {
         //check diagonally from top right to bottom left;
         counter = 0;
         for(int d = 0; d < width; d++) {
-            if (getMark(d,width-d) == mark) {
+            if (getMark(d,width-d-1) == mark) {
                 counter++;
             }
         }

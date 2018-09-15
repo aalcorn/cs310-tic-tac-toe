@@ -17,20 +17,20 @@ public class TicTacToeView {
         /* Print the board to the console (see examples) */
         
         /* INSERT YOUR CODE HERE */
-        System.out.println("\n");
+        System.out.print("\n\n");
         System.out.print("  ");
         for (int k = 0; k < model.getWidth(); k++) {
             System.out.print(k);
         }
-        System.out.println("\n");
+        System.out.print("\n\n");
         for(int i = 0; i < model.getWidth();i++) {
             System.out.print(i + " ");
             for (int j = 0; j < model.getWidth();j++) {
-                System.out.print(model.getMark(j,i));
+                System.out.print(model.getMark(i,j));
             }
-            System.out.println();
+            System.out.print("\n");
         }
-        System.out.println();
+        System.out.print("\n\n");
 
     }
 
@@ -40,10 +40,10 @@ public class TicTacToeView {
         
         /* INSERT YOUR CODE HERE */
         if (model.isXTurn()) {
-            System.out.println("Player 1 (X) Move:\nEnter the row and column numbers, separated by a space: ");
+            System.out.print("Player 1 (X) Move:\nEnter the row and column numbers, separated by a space: ");
         }
         else {
-            System.out.println("Player 1 (X) Move:\nEnter the row and column numbers, separated by a space: ");
+            System.out.print("Player 2 (O) Move:\nEnter the row and column numbers, separated by a space: ");
         }
     }
 
@@ -52,6 +52,7 @@ public class TicTacToeView {
         /* Display an error if input is invalid (see examples) */
 
         /* INSERT YOUR CODE HERE */
+        System.out.println("Invalid input! Try again.");
 
     }
 
