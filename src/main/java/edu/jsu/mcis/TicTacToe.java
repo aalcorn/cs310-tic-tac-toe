@@ -1,5 +1,9 @@
 package edu.jsu.mcis;
 
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
 
 public class TicTacToe {
 
@@ -32,11 +36,10 @@ public class TicTacToe {
         win.pack();
         win.setVisible(true);
         
-        /* Game is over; show the final board and the winner */
 
-        view.viewModel();
+        //view.viewModel();
 
-        view.showResult(model.getResult().toString());
+        //view.showResult(model.getResult().toString());
 
     }
 

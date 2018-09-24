@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class TicTacToeView extends JPanel implements ActionListener {
     
-    TicTacToeModel model;
+    private TicTacToeModel model;
 
     private JButton[][] squares;
     private JPanel squaresPanel;
@@ -58,22 +58,35 @@ public class TicTacToeView extends JPanel implements ActionListener {
         
         // INSERT YOUR CODE HERE
 
+        //int row = Integer.parseInt(Character.toString(name.charAt(6)));
+        //int col = Integer.parseInt(Character.toString(name.charAt(7))); 
+        int row = Integer.parseInt(name.substring(6,7));
+        int col = Integer.parseInt(name.substring(7,8));
+        model.makeMark(row, col);
+        updateSquares();
+        //squares[6][7].setEnabled(false);
+
+        if(model.getResult() != TicTacToeModel.Result.NONE) {            
+            showResult((model.getResult().toString()));
+        }
     }
         
     public void updateSquares() {
 
         /* Loop through all View buttons and (re)set the text of each button
            to reflect the grid contents (use the Model's "getMark()" method). */
+
+        int width = model.getWidth();
         
-        for(int i = 0; i < model.getWidth(); i++) {
-            for(int j = 0; j < model.getWidth(); i++) {
-                squares[i][j].setText(nameof(model.getMark(i,j)));
+        for(int i = 0; i < width; i++) {
+            for(int j = 0; j < width; j++) {
+                squares[i][j].setText(model.getMark(i,j).toString());
             }
         }
     }
         
     public void showResult(String message) {
-        resultLabel.setText(message);
+        resultLabel.setText(message.toUpperCase());
     }
 
 }
